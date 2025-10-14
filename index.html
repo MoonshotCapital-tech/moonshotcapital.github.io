@@ -9,13 +9,10 @@
 
   <style>
     :root {
-      --bg1: #f4f5f7;
-      --bg2: #e8eaed;
-      --bg3: #dcdfe3;
-      --text: #1a1e26;
-      --muted: #5f6672;
-      --accent: #2a3f56;   /* slate blue */
-      --accent2: #d8b97d;  /* sand gold */
+      --bg: #2b3036;     /* matches moon image background */
+      --text: #ffffff;   /* pure white */
+      --muted: #d1d1d1;  /* soft gray-white */
+      --accent: #f1d99b; /* sand-gold accent */
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -25,28 +22,10 @@
       overflow: hidden;
       font-family: 'Poppins', system-ui, sans-serif;
       color: var(--text);
-      background: linear-gradient(180deg, var(--bg1), var(--bg2));
+      background-color: var(--bg);
     }
 
-    /* Animated gradient background */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0;
-      width: 200%; height: 200%;
-      background: radial-gradient(at 20% 20%, var(--bg2), transparent 60%),
-                  radial-gradient(at 80% 80%, var(--bg3), transparent 70%);
-      animation: moveGradient 18s ease-in-out infinite alternate;
-      z-index: -1;
-      opacity: 0.7;
-    }
-
-    @keyframes moveGradient {
-      0% { transform: translate(0,0) scale(1); }
-      100% { transform: translate(-10%, -10%) scale(1.05); }
-    }
-
-    /* Floating ambient particles */
+    /* Floating ambient particles (optional, very subtle) */
     .particles {
       position: absolute;
       top: 0; left: 0;
@@ -57,7 +36,7 @@
     .particle {
       position: absolute;
       width: 6px; height: 6px;
-      background: rgba(42, 63, 86, 0.08);
+      background: rgba(255,255,255,0.08);
       border-radius: 50%;
       animation: float 14s infinite ease-in-out;
     }
@@ -89,27 +68,24 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Realistic moon logo (no orbit) */
+    /* Realistic moon logo */
     .logo {
       position: relative;
-      width: 140px;
-      height: 140px;
-      margin-bottom: 1.5rem;
+      width: 180px;
+      height: 180px;
+      margin-bottom: 1.8rem;
     }
 
     .moon-realistic {
       position: absolute;
       top: 0; left: 0;
-      width: 140px; height: 140px;
+      width: 180px; height: 180px;
       border-radius: 50%;
       background-image: url('A_landing_page_of_Moonshot_Capital,_an_investment_.png');
       background-size: cover;
       background-position: center;
-      box-shadow: inset -10px -10px 30px rgba(0,0,0,0.35),
-                  0 0 20px rgba(0,0,0,0.05);
       animation: spinMoon 180s linear infinite;
-      mask-image: radial-gradient(circle, rgba(0,0,0,1) 70%, transparent 100%);
-      -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 70%, transparent 100%);
+      box-shadow: 0 0 40px rgba(255,255,255,0.05);
     }
 
     @keyframes spinMoon {
@@ -119,7 +95,7 @@
 
     h1 {
       font-size: clamp(2rem, 4vw, 3rem);
-      color: var(--accent);
+      color: var(--text);
       margin-bottom: 1rem;
       font-weight: 600;
       letter-spacing: -0.4px;
@@ -137,7 +113,7 @@
     .divider {
       width: 60px;
       height: 3px;
-      background: var(--accent2);
+      background: var(--accent);
       margin: 1.5rem auto;
       border-radius: 2px;
     }
@@ -146,7 +122,7 @@
       display: inline-block;
       padding: 0.9rem 1.6rem;
       background: var(--accent);
-      color: #fff;
+      color: #000;
       font-weight: 500;
       border-radius: 10px;
       text-decoration: none;
@@ -154,10 +130,9 @@
       transition: all 0.25s ease;
     }
     .email:hover {
-      background: var(--accent2);
-      color: var(--text);
+      background: #fff2c8;
       transform: translateY(-2px);
-      box-shadow: 0 0 10px rgba(216,185,125,0.3);
+      box-shadow: 0 0 10px rgba(241,217,155,0.3);
     }
 
     footer {
@@ -172,7 +147,7 @@
 
     @media (max-width: 700px) {
       p { font-size: 1.05rem; padding: 0 1rem; }
-      .logo { width: 110px; height: 110px; }
+      .logo { width: 140px; height: 140px; }
     }
   </style>
 </head>
@@ -186,7 +161,7 @@
   </div>
 
   <div class="overlay">
-    <!-- Realistic moon logo -->
+    <!-- Realistic rotating moon -->
     <div class="logo">
       <div class="moon-realistic"></div>
     </div>
