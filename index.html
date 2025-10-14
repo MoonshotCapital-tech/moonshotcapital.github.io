@@ -9,78 +9,78 @@
 
   <style>
     :root {
-      --bg-light: #fafaf8;
-      --bg-dark: #f0f0ee;
-      --text: #1c2028;
-      --muted: #62686f;
-      --accent: #4a6d90;      /* slate blue / steel blue accent */
-      --accent2: #c49f6d;     /* warm sand/gold accent2 */
-      --card-bg: #ffffff;
-      --radius: 14px;
+      --text: #1b1e25;
+      --muted: #636b75;
+      --accent: #2e4762;     /* slate navy */
+      --accent2: #c7a66a;    /* sand gold */
+      --bg1: #f9f9f7;
+      --bg2: #e8ecef;
+      --bg3: #dbe0e5;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-dark) 100%);
-      color: var(--text);
-      font-family: 'Inter', system-ui, sans-serif;
-      line-height: 1.6;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .container {
-      position: relative;
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      padding: 3rem 2.5rem;
-      width: 90%;
-      max-width: 600px;
-      text-align: center;
+    html, body {
+      width: 100%;
+      height: 100%;
       overflow: hidden;
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      background: var(--bg1);
     }
 
-    /* Diagonal accent shape */
-    .container::before {
+    /* Animated gradient background */
+    body::before {
       content: "";
-      position: absolute;
-      top: -40%;
-      right: -30%;
-      width: 200%;
-      height: 200%;
-      background: var(--accent);
-      transform: rotate(25deg);
-      opacity: 0.05;
-      pointer-events: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 200%; height: 200%;
+      background: radial-gradient(at 20% 20%, var(--bg2), transparent 50%),
+                  radial-gradient(at 80% 80%, var(--bg3), transparent 60%),
+                  linear-gradient(135deg, #f6f7f8 0%, #eceff2 100%);
+      background-blend-mode: overlay;
+      animation: moveGradient 18s ease-in-out infinite alternate;
+      z-index: -1;
+    }
+
+    @keyframes moveGradient {
+      0% { transform: translate(0,0) scale(1); }
+      100% { transform: translate(-10%, -10%) scale(1.05); }
+    }
+
+    .overlay {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100vh;
+      padding: 2rem;
     }
 
     .logo {
-      width: 70px;
+      width: 80px;
       height: auto;
-      margin-bottom: 1.3rem;
+      margin-bottom: 1.5rem;
     }
 
     h1 {
-      font-size: clamp(1.9rem, 3vw, 2.4rem);
+      font-size: clamp(2rem, 4vw, 3rem);
       color: var(--accent);
       margin-bottom: 1rem;
       font-weight: 700;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.4px;
     }
 
     p {
+      max-width: 650px;
+      font-size: 1.15rem;
       color: var(--muted);
+      line-height: 1.6;
       margin-bottom: 2rem;
-      font-size: 1.1rem;
     }
 
     .divider {
-      width: 50px;
+      width: 60px;
       height: 3px;
       background: var(--accent2);
       margin: 1.5rem auto;
@@ -89,13 +89,14 @@
 
     .email {
       display: inline-block;
-      padding: 0.9rem 1.4rem;
+      padding: 0.9rem 1.6rem;
       background: var(--accent);
       color: #fff;
       font-weight: 600;
-      border-radius: var(--radius);
+      border-radius: 10px;
       text-decoration: none;
-      transition: background 0.25s ease, transform 0.2s ease;
+      letter-spacing: 0.2px;
+      transition: all 0.25s ease;
     }
     .email:hover {
       background: var(--accent2);
@@ -104,30 +105,65 @@
     }
 
     footer {
-      margin-top: 2.5rem;
+      position: absolute;
+      bottom: 1.5rem;
+      left: 0;
+      right: 0;
+      text-align: center;
       font-size: 0.9rem;
       color: var(--muted);
     }
 
-    @media (max-width: 600px) {
-      .container { padding: 2.5rem 1.8rem; }
-      .logo { width: 60px; }
+    /* Subtle floating particles */
+    .particles {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+    .particle {
+      position: absolute;
+      width: 6px; height: 6px;
+      background: rgba(46, 71, 98, 0.08);
+      border-radius: 50%;
+      animation: float 12s infinite ease-in-out;
+    }
+    .particle:nth-child(2) { width: 8px; height: 8px; left: 70%; animation-delay: -3s; }
+    .particle:nth-child(3) { width: 4px; height: 4px; left: 40%; animation-delay: -6s; }
+    .particle:nth-child(4) { width: 10px; height: 10px; left: 85%; animation-delay: -1s; }
+
+    @keyframes float {
+      0% { transform: translateY(110vh) scale(1); opacity: 0; }
+      10% { opacity: 0.3; }
+      50% { opacity: 0.6; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
+
+    @media (max-width: 700px) {
+      p { font-size: 1.05rem; padding: 0 1rem; }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
+  <div class="particles">
+    <div class="particle" style="left:10%; animation-duration: 18s;"></div>
+    <div class="particle" style="left:25%; animation-duration: 22s;"></div>
+    <div class="particle" style="left:60%; animation-duration: 16s;"></div>
+    <div class="particle" style="left:80%; animation-duration: 26s;"></div>
+  </div>
+
+  <div class="overlay">
     <img src="logo.png" alt="Moonshot Capital logo" class="logo">
     <h1>Moonshot Capital</h1>
-    <p>
-      A family office and private equity firm focused on healthcare services and healthcare IT.<br>
-      We partner with founders and operators building category-leading businesses that improve outcomes and efficiency.
-    </p>
+    <p>A family office and private equity firm focused on healthcare services and healthcare IT.<br>
+    We partner with founders and operators building category-leading businesses that improve patient outcomes and operational efficiency.</p>
     <div class="divider"></div>
     <a class="email" href="mailto:info@moonshotcapital.io">info@moonshotcapital.io</a>
-    <footer>© <span id="y"></span> Moonshot Capital. All rights reserved.</footer>
   </div>
+
+  <footer>© <span id="y"></span> Moonshot Capital. All rights reserved.</footer>
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
