@@ -9,11 +9,13 @@
 
   <style>
     :root {
-      --bg1: #0b1220;     /* deep navy */
-      --bg2: #111a2e;     /* dark blue-gray */
-      --accent: #c7a66a;  /* sand gold */
-      --text: #f4f5f7;
-      --muted: #a3a8b3;
+      --bg1: #f9f9f7;
+      --bg2: #e8ecef;
+      --bg3: #dfe4e8;
+      --text: #1a1e26;
+      --muted: #5f6672;
+      --accent: #2a3f56;   /* slate blue */
+      --accent2: #d8b97d;  /* sand gold */
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -23,22 +25,26 @@
       overflow: hidden;
       font-family: 'Inter', system-ui, sans-serif;
       color: var(--text);
-      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      background: var(--bg1);
     }
 
     /* Animated gradient background */
     body::before {
       content: "";
       position: fixed;
-      inset: 0;
-      background: radial-gradient(at 30% 30%, rgba(199,166,106,0.15), transparent 50%),
-                  radial-gradient(at 70% 70%, rgba(88,114,163,0.18), transparent 60%);
-      animation: moveGlow 18s ease-in-out infinite alternate;
+      top: 0; left: 0;
+      width: 200%; height: 200%;
+      background: radial-gradient(at 20% 20%, var(--bg2), transparent 50%),
+                  radial-gradient(at 80% 80%, var(--bg3), transparent 60%),
+                  linear-gradient(135deg, #f7f8f9 0%, #eef1f3 100%);
+      background-blend-mode: overlay;
+      animation: moveGradient 18s ease-in-out infinite alternate;
       z-index: -1;
     }
-    @keyframes moveGlow {
+
+    @keyframes moveGradient {
       0% { transform: translate(0,0) scale(1); }
-      100% { transform: translate(-5%, -5%) scale(1.1); }
+      100% { transform: translate(-10%, -10%) scale(1.05); }
     }
 
     /* Floating particles */
@@ -52,13 +58,14 @@
     .particle {
       position: absolute;
       width: 6px; height: 6px;
-      background: rgba(255,255,255,0.07);
+      background: rgba(42, 63, 86, 0.08);
       border-radius: 50%;
-      animation: float 15s infinite ease-in-out;
+      animation: float 14s infinite ease-in-out;
     }
-    .particle:nth-child(2) { width: 8px; height: 8px; left: 30%; animation-delay: -4s; }
-    .particle:nth-child(3) { width: 5px; height: 5px; left: 70%; animation-delay: -7s; }
-    .particle:nth-child(4) { width: 10px; height: 10px; left: 50%; animation-delay: -2s; }
+    .particle:nth-child(2) { width: 8px; height: 8px; left: 25%; animation-delay: -4s; }
+    .particle:nth-child(3) { width: 5px; height: 5px; left: 60%; animation-delay: -8s; }
+    .particle:nth-child(4) { width: 10px; height: 10px; left: 85%; animation-delay: -2s; }
+
     @keyframes float {
       0% { transform: translateY(110vh) scale(1); opacity: 0; }
       10% { opacity: 0.3; }
@@ -66,7 +73,7 @@
       100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
     }
 
-    /* Content layout */
+    /* Centered overlay content */
     .overlay {
       display: flex;
       flex-direction: column;
@@ -77,6 +84,7 @@
       padding: 2rem;
       animation: fadeIn 1.2s ease forwards;
     }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
@@ -86,12 +94,11 @@
       width: 80px;
       height: auto;
       margin-bottom: 1.5rem;
-      filter: drop-shadow(0 0 10px rgba(255,255,255,0.1));
     }
 
     h1 {
       font-size: clamp(2rem, 4vw, 3rem);
-      color: var(--text);
+      color: var(--accent);
       margin-bottom: 1rem;
       font-weight: 700;
       letter-spacing: -0.4px;
@@ -108,7 +115,7 @@
     .divider {
       width: 60px;
       height: 3px;
-      background: var(--accent);
+      background: var(--accent2);
       margin: 1.5rem auto;
       border-radius: 2px;
     }
@@ -116,9 +123,8 @@
     .email {
       display: inline-block;
       padding: 0.9rem 1.6rem;
-      background: transparent;
-      border: 1px solid var(--accent);
-      color: var(--accent);
+      background: var(--accent);
+      color: #fff;
       font-weight: 600;
       border-radius: 10px;
       text-decoration: none;
@@ -126,10 +132,10 @@
       transition: all 0.25s ease;
     }
     .email:hover {
-      background: var(--accent);
-      color: var(--bg1);
+      background: var(--accent2);
+      color: var(--text);
       transform: translateY(-2px);
-      box-shadow: 0 0 12px rgba(199,166,106,0.3);
+      box-shadow: 0 0 10px rgba(216,185,125,0.3);
     }
 
     footer {
@@ -159,8 +165,10 @@
   <div class="overlay">
     <img src="logo.png" alt="Moonshot Capital logo" class="logo">
     <h1>Moonshot Capital</h1>
-    <p>A family office and private equity firm focused on healthcare services and healthcare IT.<br>
-    We partner with founders and operators building category-leading businesses that improve patient outcomes and operational efficiency.</p>
+    <p>
+      A family office and private equity firm focused on healthcare services and healthcare IT.<br>
+      We partner with founders and operators building category-leading businesses that improve patient outcomes and operational efficiency.
+    </p>
     <div class="divider"></div>
     <a class="email" href="mailto:info@moonshotcapital.io">info@moonshotcapital.io</a>
   </div>
