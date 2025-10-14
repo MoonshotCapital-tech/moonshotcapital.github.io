@@ -4,169 +4,204 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Moonshot Capital — Healthcare & HCIT Investments</title>
-  <meta name="description" content="Moonshot Capital is a family office / private equity firm investing in healthcare services and healthcare IT (HCIT).">
-  <meta name="color-scheme" content="light">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Moonshot Capital is a family office investing in healthcare services and healthcare IT (HCIT).">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    :root{
+    :root {
       --bg: #ffffff;
-      --surface: #f7f9fc;
       --text: #1a1f2c;
       --muted: #5b6477;
       --primary: #0b1e46; /* deep navy */
       --accent: #9aa6b2;  /* silver-gray */
-      --ring: rgba(11, 30, 70, 0.15);
-      --radius: 16px;
-      --shadow: 0 10px 30px rgba(11,30,70,.08);
-      --shadow-strong: 0 20px 40px rgba(11,30,70,.12);
+      --banner: #f2f4f8;  /* light navy tint */
+      --radius: 12px;
     }
 
-    *{ box-sizing: border-box; }
-    html,body{
-      margin:0;
-      padding:0;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
       line-height: 1.6;
-    }
-    img{ max-width:100%; height:auto; }
-    a{ color: var(--primary); text-decoration: none; }
-    a:hover{ text-decoration: underline; }
-    .container{ width: min(1100px, calc(100% - 3rem)); margin-inline: auto; }
-    .section{ padding: clamp(3rem, 6vw, 5rem) 0; }
-
-    .reveal{ opacity: 0; transform: translateY(24px); animation: up .8s ease-out forwards; }
-    .reveal.delay-1{ animation-delay: .15s; }
-    .reveal.delay-2{ animation-delay: .3s; }
-    .reveal.delay-3{ animation-delay: .45s; }
-    @keyframes up{ to{ opacity:1; transform: none; } }
-    @media (prefers-reduced-motion: reduce){
-      .reveal{ opacity:1; transform:none; animation: none; }
-      *{ scroll-behavior: auto; }
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
-    header.nav{
-      position: sticky; top: 0; z-index: 50;
-      backdrop-filter: saturate(180%) blur(10px);
-      background: color-mix(in oklab, var(--bg) 84%, white 16%);
-      border-bottom: 1px solid rgba(11, 30, 70, .06);
-    }
-    .nav-wrap{
-      display:flex; align-items:center; justify-content:space-between;
-      padding: .9rem 0;
-    }
-    .brand{
-      display:flex; align-items:center; gap:.75rem; font-weight:600; letter-spacing:.2px;
-    }
-    .brand img{ width:40px; height:auto; border-radius: 6px; box-shadow: var(--shadow); }
-    .nav-links{ display:flex; gap:1rem; }
-    .nav-links a{ padding:.4rem .7rem; border-radius: 10px; }
-    .nav-links a:focus-visible{ outline: 2px solid var(--ring); outline-offset: 2px; }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; height: auto; }
 
-    .hero{
-      padding: clamp(4rem, 9vw, 7rem) 0 clamp(2rem, 6vw, 4rem);
-      background:
-        radial-gradient(1200px 600px at 50% -20%, rgba(11,30,70,.06), transparent 60%),
-        linear-gradient(180deg, #ffffff 0%, #f4f7fb 100%);
-      border-bottom: 1px solid rgba(11,30,70,.06);
+    .container {
+      width: min(1100px, 90%);
+      margin: 0 auto;
     }
-    .hero-grid{
-      display:grid; gap:2rem; align-items:center;
-      grid-template-columns: 1.1fr .9fr;
+
+    /* Banner */
+    .banner {
+      background: linear-gradient(90deg, #0b1e46 0%, #152a5a 100%);
+      color: white;
+      text-align: center;
+      padding: 0.6rem 0;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
     }
-    .hero h1{
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.15;
-      margin: 0 0 .75rem;
+
+    /* Header */
+    header {
+      border-bottom: 1px solid rgba(11,30,70,.08);
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2px;
       color: var(--primary);
-      letter-spacing: -.3px;
     }
-    .hero .lead{
-      font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+    .brand img {
+      width: 38px;
+      height: auto;
+      border-radius: 6px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      font-weight: 500;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: left;
+      padding: 5rem 0 3.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      color: var(--primary);
+      margin-bottom: 1.1rem;
+      line-height: 1.2;
+    }
+    .hero p {
       color: var(--muted);
+      font-size: 1.1rem;
       max-width: 52ch;
-      margin: 0 0 1.25rem;
+      margin-bottom: 1.8rem;
     }
-    .cta-row{ display:flex; gap:.75rem; align-items:center; flex-wrap: wrap; }
-    .btn{
-      display:inline-flex; align-items:center; gap:.5rem;
-      padding:.8rem 1rem; border-radius: 12px; border:1px solid rgba(11,30,70,.12);
-      background:#fff; color:var(--primary); font-weight:600; box-shadow: var(--shadow);
+    .cta-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
-    .btn.primary{
-      background: var(--primary); color:#fff; border-color: transparent;
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.1rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--primary);
+      font-weight: 600;
+      transition: all 0.2s ease;
     }
-    .btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow-strong); }
-    .btn:active{ transform:none; }
-
-    .hero-card{
-      background: #fff; border: 1px solid rgba(11,30,70,.08); border-radius: var(--radius);
-      padding: clamp(1rem, 3vw, 1.5rem);
-      box-shadow: var(--shadow);
-      display:flex; align-items:center; justify-content:center;
+    .btn.primary {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
     }
-    .hero-card img{ width: 260px; height: auto; }
-
-    .about-grid{ display:grid; gap:1.5rem; grid-template-columns: 1fr 1fr; }
-    .card{
-      background:#fff; border:1px solid rgba(11,30,70,.08); border-radius: var(--radius);
-      padding: clamp(1rem, 3vw, 1.5rem); box-shadow: var(--shadow);
-    }
-    .eyebrow{ font-size:.9rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color: var(--accent); }
-    .h2{ font-size: clamp(1.5rem, 2.6vw, 2rem); margin:.4rem 0 1rem; color: var(--primary); }
-    .muted{ color: var(--muted); }
-
-    .features{ display:grid; gap:1rem; grid-template-columns: repeat(2, 1fr); }
-    .feat{ display:grid; gap:.35rem; }
-    .icon{
-      width: 42px; height:42px;
-      display:grid; place-items:center; border-radius:12px;
-      background: var(--surface); border: 1px solid rgba(11,30,70,.08);
-      box-shadow: var(--shadow);
-      margin-bottom:.4rem;
+    .btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
     }
 
-    .contact{
-      background: linear-gradient(180deg, #f6f8fc, #ffffff);
-      border-top:1px solid rgba(11,30,70,.06);
+    /* Section cards */
+    section {
+      padding: 4.5rem 0;
+      border-top: 1px solid rgba(11,30,70,.05);
     }
-    .contact .card{ text-align:center; }
-    .contact .card p{ margin:.3rem 0 1rem; }
-    .email{
-      display:inline-block; padding:.7rem 1rem; border-radius:12px;
-      border:1px solid rgba(11,30,70,.12); background:#fff; color:var(--primary);
-      font-weight:600; box-shadow: var(--shadow);
+    .card {
+      background: #fff;
+      border: 1px solid rgba(11,30,70,.08);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(11,30,70,.05);
+    }
+    .eyebrow {
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+    }
+    h2 {
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      color: var(--primary);
+      margin: 0.5rem 0 1rem;
+    }
+    p { color: var(--muted); }
+
+    /* Contact */
+    .contact {
+      text-align: center;
+      background: var(--banner);
+      border-top: 1px solid rgba(11,30,70,.06);
+    }
+    .contact .card {
+      background: #fff;
+      border: 1px solid rgba(11,30,70,.08);
+      box-shadow: 0 2px 10px rgba(11,30,70,.05);
+      display: inline-block;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .email {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.7rem 1rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(11,30,70,.12);
+      background: #fff;
+      color: var(--primary);
+      font-weight: 600;
     }
 
-    footer{ padding: 2rem 0; border-top:1px solid rgba(11,30,70,.06); color: var(--accent); font-size:.95rem; }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      border-top: 1px solid rgba(11,30,70,.06);
+      color: var(--accent);
+      font-size: 0.95rem;
+    }
 
-    @media (max-width: 900px){
-      .hero-grid{ grid-template-columns: 1fr; }
-      .about-grid{ grid-template-columns: 1fr; }
-      .features{ grid-template-columns: 1fr; }
-      .hero-card img{ width: 220px; }
+    @media (max-width: 800px) {
+      .nav { flex-direction: column; gap: 0.5rem; }
+      .hero { text-align: center; }
+      .hero p { margin-left: auto; margin-right: auto; }
+      .cta-row { justify-content: center; }
+      .contact .card { width: 100%; }
     }
   </style>
-
-  <script>
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-      document.documentElement.style.scrollBehavior = 'smooth';
-    }
-  </script>
 </head>
 
 <body>
-  <header class="nav" role="navigation" aria-label="Main">
-    <div class="container nav-wrap">
+  <div class="banner">
+    Moonshot Capital — Focused on Healthcare &amp; HCIT Investments
+  </div>
+
+  <header>
+    <div class="container nav">
       <a class="brand" href="#top">
         <img src="logo.png" alt="Moonshot Capital logo">
         <span>Moonshot&nbsp;Capital</span>
       </a>
-      <nav class="nav-links" aria-label="Sections">
+      <nav class="nav-links">
         <a href="#about">About</a>
         <a href="#focus">Focus</a>
         <a href="#contact">Contact</a>
@@ -174,103 +209,56 @@
     </div>
   </header>
 
-  <main id="top" class="hero">
-    <div class="container hero-grid">
-      <div class="reveal">
-        <h1>Investing in healthcare services &amp; HCIT</h1>
-        <p class="lead">
-          We partner with founders and operators building category-leading businesses that
-          improve patient outcomes and operational efficiency across the healthcare ecosystem.
-        </p>
-        <div class="cta-row">
-          <a class="btn primary" href="#contact" aria-label="Go to contact section">Get in touch</a>
-          <a class="btn" href="#about">Learn more</a>
-        </div>
-      </div>
-      <div class="hero-card reveal delay-1" aria-hidden="true">
-        <img src="logo.png" alt="">
+  <main id="top">
+    <div class="container hero">
+      <h1>Investing in Healthcare Services &amp; HCIT</h1>
+      <p>Moonshot Capital partners with founders and operators building category-leading businesses that improve patient outcomes and operational efficiency across the healthcare ecosystem.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="#contact">Get in touch</a>
+        <a class="btn" href="#about">Learn more</a>
       </div>
     </div>
   </main>
 
-  <section id="about" class="section">
-    <div class="container about-grid">
-      <article class="card reveal">
-        <div class="eyebrow">About us</div>
-        <h2 class="h2">Long-term capital, sector expertise</h2>
-        <p class="muted">
-          Moonshot Capital is a family office and private equity firm focused on healthcare services and healthcare IT.
-          Our approach combines patient-centric thinking with disciplined execution to accelerate growth and create durable value.
-        </p>
-      </article>
-
-      <article class="card reveal delay-1">
-        <div class="eyebrow">What we bring</div>
-        <div class="features">
-          <div class="feat">
-            <div class="icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M6 4v5a4 4 0 0 0 8 0V4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                <path d="M14 14a4 4 0 0 0 8 0 3 3 0 1 0-3 3h-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div><strong>Healthcare depth</strong><br><span class="muted">Services, payor, provider, and HCIT experience.</span></div>
-          </div>
-          <div class="feat">
-            <div class="icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M4 20V10M10 20V6M16 20v-8M22 20H2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div><strong>Operational focus</strong><br><span class="muted">Data-driven value creation and scalability.</span></div>
-          </div>
-          <div class="feat">
-            <div class="icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M3 12l4-4 5 5 5-5 4 4-6 6-3-3-3 3-6-6z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div><strong>Partnership</strong><br><span class="muted">Founder-first alignment and support.</span></div>
-          </div>
-          <div class="feat">
-            <div class="icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 3l8 3v6a8 8 0 1 1-16 0V6l8-3z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-                <path d="M9.5 13a2.5 2.5 0 1 0 5 0 2.5 2.5 0 0 0-5 0z" stroke="currentColor" stroke-width="1.6" />
-              </svg>
-            </div>
-            <div><strong>Stewardship</strong><br><span class="muted">Long-term perspective and governance.</span></div>
-          </div>
-        </div>
-      </article>
+  <section id="about">
+    <div class="container">
+      <div class="card">
+        <div class="eyebrow">About Us</div>
+        <h2>Long-Term Capital, Sector Expertise</h2>
+        <p>Moonshot Capital is a family office and private equity firm focused on healthcare services and healthcare IT. Our approach combines patient-centric thinking with disciplined execution to accelerate growth and create durable value.</p>
+      </div>
     </div>
   </section>
 
-  <section id="focus" class="section">
+  <section id="focus">
     <div class="container">
-      <article class="card reveal">
-        <div class="eyebrow">Focus areas</div>
-        <h2 class="h2">Healthcare services &amp; HCIT</h2>
-        <p class="muted">We target defensible businesses with strong unit economics, clear value to stakeholders, and opportunities for product or market expansion.</p>
-      </article>
+      <div class="card">
+        <div class="eyebrow">Focus Areas</div>
+        <h2>Healthcare Services &amp; HCIT</h2>
+        <p>We target defensible businesses with strong unit economics, clear value to stakeholders, and opportunities for product or market expansion.</p>
+      </div>
     </div>
   </section>
 
-  <section id="contact" class="section contact">
+  <section id="contact" class="contact">
     <div class="container">
-      <article class="card reveal" role="region" aria-label="Contact">
+      <div class="card">
         <div class="eyebrow">Contact</div>
-        <h2 class="h2">Let’s connect</h2>
-        <p class="muted">We’d love to hear from founders, operators, and co-investors.</p>
+        <h2>Let’s Connect</h2>
+        <p>We’d love to hear from founders, operators, and co-investors.</p>
         <a class="email" href="mailto:info@moonshotcapital.io">info@moonshotcapital.io</a>
-      </article>
+      </div>
     </div>
   </section>
 
   <footer>
-    <div class="container">© <span id="y"></span> Moonshot Capital. All rights reserved.</div>
+    <div class="container">
+      © <span id="y"></span> Moonshot Capital. All rights reserved.
+    </div>
   </footer>
 
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
