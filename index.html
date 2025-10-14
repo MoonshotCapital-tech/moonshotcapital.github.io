@@ -90,17 +90,36 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Animated logo */
+    /* SVG logo and orbit */
     .logo {
-      width: 90px;
-      height: 90px;
+      width: 100px;
+      height: 100px;
       margin-bottom: 1.5rem;
-      animation: spin-slow 30s linear infinite;
+      position: relative;
     }
 
-    @keyframes spin-slow {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+    .moon {
+      fill: #dcdcdc;
+      stroke: #bbb;
+      stroke-width: 0.5;
+      filter: drop-shadow(0 0 6px rgba(0,0,0,0.1));
+    }
+
+    .orbit-path {
+      fill: none;
+      stroke: rgba(216,185,125,0.5);
+      stroke-width: 1.5;
+    }
+
+    .orbiter {
+      fill: var(--accent2);
+      transform-origin: 50px 50px;
+      animation: orbit 6s linear infinite;
+    }
+
+    @keyframes orbit {
+      from { transform: rotate(0deg) translateX(30px) rotate(0deg); }
+      to { transform: rotate(360deg) translateX(30px) rotate(-360deg); }
     }
 
     h1 {
@@ -170,11 +189,20 @@
   </div>
 
   <div class="overlay">
-    <!-- Inline animated logo -->
-    <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="50" cy="50" r="45" stroke="#2a3f56" stroke-width="4" fill="none" opacity="0.2"/>
-      <circle cx="50" cy="50" r="25" stroke="#d8b97d" stroke-width="4" fill="none" />
-      <circle cx="80" cy="20" r="6" fill="#2a3f56" />
+    <!-- Inline moon + orbit animation -->
+    <svg class="logo" viewBox="0 0 100 100">
+      <defs>
+        <radialGradient id="moonGradient" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#f8f8f8"/>
+          <stop offset="100%" stop-color="#dcdcdc"/>
+        </radialGradient>
+      </defs>
+      <!-- moon -->
+      <circle class="moon" cx="50" cy="50" r="20" fill="url(#moonGradient)"/>
+      <!-- orbit path -->
+      <circle class="orbit-path" cx="50" cy="50" r="30"/>
+      <!-- orbiting dot -->
+      <circle class="orbiter" cx="50" cy="50" r="3"/>
     </svg>
 
     <h1>Moonshot Capital</h1>
