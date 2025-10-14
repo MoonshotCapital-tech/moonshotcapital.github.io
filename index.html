@@ -73,7 +73,7 @@
       100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
     }
 
-    /* Centered overlay content */
+    /* Centered content */
     .overlay {
       display: flex;
       flex-direction: column;
@@ -90,10 +90,17 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* Animated logo */
     .logo {
-      width: 80px;
-      height: auto;
+      width: 90px;
+      height: 90px;
       margin-bottom: 1.5rem;
+      animation: spin-slow 30s linear infinite;
+    }
+
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
 
     h1 {
@@ -163,7 +170,13 @@
   </div>
 
   <div class="overlay">
-    <img src="logo.png" alt="Moonshot Capital logo" class="logo">
+    <!-- Inline animated logo -->
+    <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="45" stroke="#2a3f56" stroke-width="4" fill="none" opacity="0.2"/>
+      <circle cx="50" cy="50" r="25" stroke="#d8b97d" stroke-width="4" fill="none" />
+      <circle cx="80" cy="20" r="6" fill="#2a3f56" />
+    </svg>
+
     <h1>Moonshot Capital</h1>
     <p>
       A family office and private equity firm focused on healthcare services and healthcare IT.<br>
